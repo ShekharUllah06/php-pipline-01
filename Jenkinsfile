@@ -9,24 +9,22 @@ pipeline {
         }
         stage('Build') {
             steps {
-                // Run Phing to build your PHP project
-                sh 'phing'
+                // Run build commands for your PHP project
+                sh 'composer install'  // Example: Install PHP dependencies using Composer
+                sh 'phpunit'           // Example: Run PHPUnit tests
+                // Add more build steps as needed
             }
         }
         stage('Deploy') {
-            when {
-                expression { currentBuild.resultIsBetterOrEqualTo('SUCCESS') }
-            }
             steps {
+                // Copy the built project files to the deployment directory
                 script {
                     def webRoot = '/var/www/html'
                     def projectDir = 'phpprojects/p1'
                     def deployDir = "${webRoot}/${projectDir}"
-                    
+
                     sh "mkdir -p ${deployDir}"
                     sh "cp -r ./* ${deployDir}"
-                    
-                    echo "Deployment successful!"
                 }
             }
         }

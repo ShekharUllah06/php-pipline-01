@@ -1,0 +1,10 @@
+{
+    "name": "shekharullah/php-pipeline-01",
+    "description": "Test pipeline",
+    "autoload": {
+        "psr-4": {
+            "Shekharullah\\PhpPipeline01\\": "src/"
+        }
+    },
+    "require": {}
+}

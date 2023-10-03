@@ -9,6 +9,10 @@ pipeline {
         }
         stage('Build') {
             steps {
+                // Set COMPOSER_ALLOW_SUPERUSER environment variable
+                script {
+                    env.COMPOSER_ALLOW_SUPERUSER = '1'
+                }
                 // Run build commands for your PHP project
                 sh 'composer install'  // Example: Install PHP dependencies using Composer
                 sh 'phpunit'           // Example: Run PHPUnit tests

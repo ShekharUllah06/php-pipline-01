@@ -6,5 +6,7 @@
             "Shekharullah\\PhpPipeline01\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+    
+    }
 }
